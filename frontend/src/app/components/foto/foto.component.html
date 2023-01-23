@@ -1,0 +1,53 @@
+<img [src]="base64" width="250px" alt="" class="img-fluid" style="padding: 10px;" data-bs-toggle="modal" [attr.data-bs-target]="data_bs_target">
+
+<!-- <img src="/assets/user.png" alt="" class="img-fluid" width="250px" style="padding: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+-->
+<!-- Modal -->
+<div class="modal fade" [attr.id]="id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Descripcion de la imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mt-2 mb-3">
+            <div class="row">
+                <p class="text-center text-secondary">Puedes traducir la descripcion de una imagen en diferentes idiomas!</p>
+                <div class="col-4 text-center">
+                    <img [src]="base64" class="img-fluid" width="150px">
+                </div>
+                <div class="col">
+                    <div class="row mb-3">
+                        <label class="text-secondary">Descripcion</label>
+                        <p>{{description}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <select [(ngModel)]="opcion" class="form-select mb-2" aria-label="Default select example" aria-placeholder="Selecciona un idioma">
+                                <option value="1">Ingles</option>
+                                <option value="2">Italiano</option>
+                                <option value="3">Coreano</option>
+                              </select>
+                              <label for=""></label>
+                        </div>
+                        <div class="col">
+                            <button (click)="traducir()" class="btn btn-primary">Traducir</button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label class="text-secondary">Traduccion</label>
+                        <p>{{traduccion}}</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

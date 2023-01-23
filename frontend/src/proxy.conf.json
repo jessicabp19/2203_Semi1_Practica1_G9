@@ -1,0 +1,7 @@
+{
+    "*/*": {
+        "target": "http://54.205.142.231:5000/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

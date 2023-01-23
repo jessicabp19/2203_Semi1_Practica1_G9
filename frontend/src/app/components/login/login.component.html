@@ -1,0 +1,59 @@
+<div *ngIf="divLogin" class="container w-50">
+    <div class="row align-items-stretch">
+      <div class="col-md-6 mx-auto mt-5">
+        <div class="text-center">
+          <img src="../../../assets/user.png" width="75" alt="">
+        </div>
+        <h2 class="fw-bold text-center py-5">Bienvenido</h2>
+        <!-- LOGIN -->
+        <form action="#">
+          <div class="mb-4">
+            <label for="email" class="form-label">Usuario</label>
+            <input [(ngModel)]="username" name="username" type="email" class="form-control">
+          </div>
+          <div class="mb-4">
+            <label for="password" class="form-label">Contraseña</label>
+            <input [(ngModel)]="pass" name="pass" type="password" class="form-control">
+          </div>
+          <div class="d-grid">
+            <button (click)="login()" type="button" class="btn btn-primary mt-2 mb-2">Iniciar Sesion</button>
+
+            <button (click)="loginCamera()" type="button" class="btn btn-dark mt-2 mb-2">Entrar por cámara</button>
+          </div>
+  
+          <div class="my-3">
+            <span>Aun no tiene una cuenta? <a (click)="registro()" class="text-primary">Registrarse</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="divWebcam">
+    <div class="row align-items-stretch">
+      <div class="col-md-8 mx-auto mt-5">
+        <h2 class="fw-bold text-center">Ingresa tomandote una foto</h2>
+        <div class="form-text text-center">La imagen que captures, será comparada con tu foto actual de perfil</div>
+        
+        <div class="text-center mt-3 mb-3"> <!-- WEBCAM -->
+          <button (click)="check()" class="btn btn-outline-primary mb-3">Permitir uso de camara</button>
+          <div class="row">
+            <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" class="col"></webcam>
+          </div>
+          <div *ngIf="isCapturated" class="col">
+            <h4 class="text-center">Imagen a comparar</h4>
+            <button (click)="userLogin2()" class="btn btn-primary btn-lg me-5 row">Comparar e iniciar sesion</button>
+            <img [src]="imageCompareBase64Html" width="300px" alt="" class="img-fluid">
+          </div>
+          
+        </div>
+
+        <div class="text-center">
+          <button (click)="capturar()" class="btn btn-outline-success mt-3 mb-3 me-5">Capturar Imagen</button>
+
+          <button (click)="regresar()" class="btn btn-outline-dark mt-3 mb-3">Regresar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="divInfo" class="container mt-5 mb-4">
+    
+    <h2 class="text-secondary">Datos personales</h2>
+
+    <div class="row align-items-center mt-4">
+        <div class="col-4">
+            <img [src]="perfilBase64" width="300px" alt="" class="img-fluid row">
+            <label class="text-secondary row">Descripcion de foto de perfil:</label>
+            <label class="text-secondary row">{{perfilDescription}}</label>
+        </div>
+    
+        <div class="col-5 mt-2 mb-2">
+            <div class="row mb-3">
+                <label for="username" class="row-form-label text-secondary">Nombre de usuario</label>
+                <div>
+                    <input type="text" class="form-control-plaintext fw-bold" id="username" [(ngModel)]="username" disabled readonly>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="name" class="row-form-label text-secondary">Nombre completo</label>
+                <div>
+                    <input type="text" class="form-control-plaintext fw-bold" id="name" [(ngModel)]="name" disabled readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-2 mt-2 mb-2">
+            <button (click)="showEditarPerfil()" type="button" class="btn btn-outline-secondary">Editar perfil</button>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-evenly mt-4">
+        <!-- ver foto, subir foto, editar album-->
+        <button (click)="showVerFotos()" type="button" class="btn col-2 btn-outline-primary">Ver fotos</button>
+        <button (click)="showSubirFoto()" type="button" class="btn col-2 btn-outline-success">Subir foto</button>
+        <!-- 
+        <button (click)="showEditarAlbum()" type="button" class="btn col-2 btn-outline-warning">Editar album</button>
+        -->
+        <button (click)="showExtraerTexto()" type="button" class="btn col-2 btn-outline-dark">Extraer texto</button>
+        <button (click)="showChatbot()" type="button" class="btn col-2 btn-outline-warning">Chatbot</button>
+    </div>
+</div>
+
+<!-- LISTADO DE FOTOS -->
+<div *ngIf="divVerFotos" class="mt-5">
+    <hr>
+    <h2 class="text-secondary text-center mt-4 mb-4">Fotos publicadas</h2>
+    <h5 class="text-secondary text-center mt-3 mb-3">Al hacer click en la imagen podras ver mas informacion</h5>
+    <app-fotos *ngFor="let album of listaAlbum" [album]="album"></app-fotos>
+</div>
+
+<!-- EDITAR ALBUM-->
+<div *ngIf="divEditarAlbum" class="mt-5 mb-3">
+    <app-menu-album [albums]="albums"></app-menu-album>
+</div>
+
+<!-- NUEVO -->
+<!-- EXTRAER TEXTO -->
+<div *ngIf="divExtraerTexto">
+    <app-extraer-texto></app-extraer-texto>
+    <div class="container mb-5">
+        <button (click)="showInfo()" type="submit" class="btn btn-warning mt-3 mb-5">Regresar</button>
+    </div>
+</div>
+
+<!-- EDITAR PERFIL -->
+<div *ngIf="divEditarPerfil" class="container w-50 mb-4">
+    <h2 class="fw-bold text-center mt-4 mb-2">Perfil de usuario</h2>
+
+    <div class="row align-items-stretch">
+        <div class="col-md-7 mx-auto mt-5">
+            <div class="text-center mt-1 mb-1" *ngIf="imagen_">
+                <img [src]="imagen_" width="400px" alt="" class="img-fluid">
+            </div>
+            <div class="mt-5">
+                <label for="formFileSm" class="form-label">Nueva foto</label>
+                <input (change)="capturarFile($event)" multiple name="image" class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto mt-5">
+            <form action="">
+                <div class="mb-3">
+                    <label for="name_" class="form-label">Nombre</label>
+                    <input [(ngModel)]="name_" name="name_" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="username_" class="form-label">Usuario</label>
+                    <input [(ngModel)]="username_" name="username_" type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="pass_" class="form-label">Confirmar contraseña</label>
+                    <input [(ngModel)]="pass_" name="pass_" type="password" class="form-control">
+                </div>
+                <div class="container text-center mb-5">
+                    <button (click)="actualizarInfo()" type="submit" class="btn btn-success mt-3">Actualizar</button>
+                </div>
+
+                <div class="container text-center mb-5">
+                    <button (click)="showInfo()" type="submit" class="btn btn-warning mt-3">Regresar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="divSubirFoto">
+    <app-upload-image [albums]="albums"></app-upload-image>
+    <div class="container mb-5">
+        <button (click)="showInfo()" type="submit" class="btn btn-warning mt-3 mb-5">Regresar</button>
+    </div>
+</div>
+
+<!-- CHAT BOT -->
+<div *ngIf="divChatBot">
+    <app-chatbot></app-chatbot>
+    <div class="container mb-5">
+        <button (click)="showInfo()" type="submit" class="btn btn-warning mt-3 mb-5">Regresar</button>
+    </div>
+</div>

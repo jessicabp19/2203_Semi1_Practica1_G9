@@ -1,0 +1,13 @@
+<div class="container w-50 mb-4">
+    <h2 class="fw-bold text-center mt-4 mb-2">Inicia una conversacion con nuestro ChatBot</h2>
+    <h5 class="text-secondary text-center">Puedes consultar opcion1, opcion 2, ...</h5>
+    <div class="row align-items-stretch">
+        <textarea readonly name="" id="" cols="30" [(ngModel)]="conversation" rows="10"></textarea>
+
+        <div class="input-group mb-3 mt-5">
+            <input type="text" class="form-control" [(ngModel)]="message" placeholder="Ingresa tu mensaje ..." aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button (click)="startChat()" class="btn btn-outline-secondary" type="button" id="button-addon2">Enviar</button>
+        </div>
+          
+    </div>
+</div>

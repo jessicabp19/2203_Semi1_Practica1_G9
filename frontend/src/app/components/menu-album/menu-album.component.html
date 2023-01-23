@@ -1,0 +1,32 @@
+<hr>
+<div class="col-8 w-50 mx-auto mb-5">
+    <h2 class="text-secondary text-center">Mis Álbumes</h2>
+    <div class="text-center">
+        <mat-form-field appearance="fill" class="mt-4">
+            <mat-label>Album</mat-label>
+            <mat-select [(ngModel)]="albumSeleccionado" placeholder="Album" name="album" (selectionChange)="cambio(albumSeleccionado)">
+                <mat-option *ngFor="let val of listaAlbum" [value]="val">
+                    {{val}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <p class="text-secondary">Si deseas agregar un nuevo Album, ingresa el nombre y luego haz click en "Agregar"</p>
+        <p class="text-secondary">Si deseas eliminar un Album, selecciona uno existente y luego haz click en Eliminar</p>
+        <p class="text-secondary">Si deseas modificar el nombre de un Album, seleccionalo en la lista de tus albumes existentes, cambia su nombre en el area de texto y luego haz click en Modificar</p>
+    </div>
+    <form>
+        <div class="form-control">
+            <label for="textAlbum">Nombre del album</label>
+            <input [(ngModel)]="textAlbum" type="text" id="textAlbum" class="form-control" name="textAlbum">
+        </div>
+    </form>
+    <div class="text-center mx-auto mb-4 mt-4">
+        <button (click)="Agregar()" class="col-2 btn btn-primary">Agregar</button>
+        <button (click)="Modificar()" class="col-2 btn btn-primary ms-5 me-5">Modificar</button>
+        <button (click)="Eliminar()" class="col-2 btn btn-danger">Eliminar</button>
+    </div>
+
+    <hr>
+</div>

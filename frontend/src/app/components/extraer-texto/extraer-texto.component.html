@@ -1,0 +1,26 @@
+<div class="container w-50 mb-4">
+    <h2 class="fw-bold text-center mt-4 mb-2">Extraer el texto de una foto</h2>
+
+    <div class="row align-items-stretch">
+        <div class="col-md-7 mx-auto mt-5">
+            <div class="text-center mt-1 mb-1" *ngIf="imagen_">
+                <img [src]="imagen_" width="400px" alt="" class="img-fluid">
+            </div>
+            <div class="mt-5">
+                <label for="formFileSm" class="form-label">Sube una imagen con texto!</label>
+                <input (change)="capturarFile($event)" multiple name="image" class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto mt-5">
+            <form action="">
+                <div *ngIf="traducido" class="mb-3 text-center">
+                    <h4 class="text-secondary">Texto obtenido:</h4>
+                    {{descripcion}}
+                </div>
+                <div class="container text-center mb-5">
+                    <button (click)="extraerTexto()" type="button" class="btn btn-success mt-3">Obtener texto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
